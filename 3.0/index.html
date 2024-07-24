@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React JS</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const root = document.getElementById('root');
+  let counter = 0;
+  function countUp(){
+    counter = counter + 1;
+    render();
+  }
+  function render(){ // 데이터가 변경될 때마다, 리렌더링 필요
+    ReactDOM.render(<Container />, root);
+  }
+  const Container = () => (// 리렌더링시, 변경된 부분만 변화됨
+    <div>
+      <h3>Total Clicks : {counter}</h3>
+      <button onClick={countUp}>Click me</button>
+    </div>
+  );
+  // function Container(){
+  //   return (
+  //     <div>
+  //       <h3>Total Clicks : {counter}</h3>
+  //       <button onClick={countUp}>Click me</button>
+  //     </div>
+  //   );
+  // }
+  render();
+</script>
+</html>
