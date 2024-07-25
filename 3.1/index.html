@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React JS</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const root = document.getElementById('root');
+  function App(){
+    // const data = React.useState(); // 초기값이 없을때
+    
+    // const data = React.useState(0);   // 초기값 넣었을때
+    // const counter = data[0];
+    // const modifier = data[1];
+
+    // 구조 분해 할당
+    const [counter, modifier] = React.useState(0);   // 초기값 넣었을때
+    return (
+      <div>
+        <h3>Total Clicks : 0</h3>
+        <button>Click me</button>
+      </div>
+    );
+  }
+  ReactDOM.render(<App />, root);
+</script>
+</html>
