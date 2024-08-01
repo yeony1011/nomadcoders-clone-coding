@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React JS</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const root = document.getElementById('root');
+  function App(){
+    const [amount, setAmount] = React.useState();
+    const [flipped, setFlipped] = React.useState(false);
+    const onChange = (event) => {
+      setAmount(event.target.value);
+    };
+    const onReset = () => setAmount(0);
+    // const onFlip = () => setFlipped(!flipped);
+    const onFlip = () => {
+      onReset();
+      setFlipped((current) => !current)
+    };
+    return (
+      <div>
+        <h1>Super Converter</h1>
+        <div>
+          <label for="minutes">Minutes</label>
+          <input type="number" id="minutes" value={flipped? amount * 60 : amount} placeholder="Minutes" onChange={onChange} disabled={flipped} />
+        </div>
+        <div>
+          <label for="hours">Hours</label>
+          <input type="number" id="hours" value={flipped? amount : Math.round(amount / 60)} placeholder="Hours" onChange={onChange} disabled={!flipped} />
+        </div>
+        <button type="reset" onClick={onReset}>reset</button>
+        <button type="button" onClick={onFlip}>flip</button>
+      </div>
+    );
+  }
+  ReactDOM.render(<App />, root);
+</script>
+</html>
