@@ -24,7 +24,10 @@
     // const onInvert = () => setInverted(!inverted);
     const onInvert = () => {
       onReset();
-      setInverted((current) => !current)
+      setInverted((current) => {
+        !current;
+        // console.log(!current);
+      });
     };
     return (
       <div>
