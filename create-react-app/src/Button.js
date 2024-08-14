@@ -3,7 +3,11 @@ import styles from "./Button.module.css"; // js 객체로 들어가서 사용, �
 // import styles from "./Button.css"; // css class 로 사용
 
 function Button({text}){
-  return <button className={styles.btn}>{text}</button>;
+  return (
+    <button type="button" className={styles.btn}>{text}</button>
+    // <button type="button" className={`${styles.btn} ${styles.disabled}`}>{text}</button>
+    // <button className="btn">{text}</button>
+  );
 }
 
 Button.propTypes = {
