@@ -33,6 +33,10 @@ function App() {
     console.log('I run when keyword and counter changes');
   }, [keyword, counter]);
 
+  // useEffect(argument, dependency) : 코드를 언제 실행할지 결정하는 useEffect
+  // useEffect(() => {}, []) : [] 빈값일때 reactjs가 바라보는 대상이 없어 한번만 코드 실행
+  // useEffect(() => {}, [블라블라]) : 블라블라 가 변경될 때 코드 실행 / 블라블라는 state를 말함 / 즉, state가 변경될 때 코드 실행
+
   return (
     <div>
       <input type="text" value={keyword} placeholder="Search here" onChange={onChange} />
