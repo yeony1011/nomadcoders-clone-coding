@@ -1,51 +1,41 @@
-import { useState, useEffect } from "react";
-// import Button from "./Button";
-// import styles from "./App.module.css";
+import { useState } from "react";
 
-function App() {
-  const [counter, setValue] = useState(0); // create react app을 사용하고있어서 React.useState()를 사용하지 않아도 됨
-  const [keyword, setKeyword] = useState('');
-  
-  const onClick = () => setValue((prev) => prev + 1);
-  const onChange = (event) => {
-    setKeyword(event.target.value);
-  };
-  // console.log('i run all the time');
-  
-  // const iRunOnlyOnce = () => {
-  //   console.log('i run only once');
-  // }
-  // useEffect(iRunOnlyOnce, []); // useEffect() : state가 변화하던, 코드를 딱 한번만 실행시켜줌
+function App(){
+  const [toDo, setToDo] = useState("");
+  const [toDos, setToDos] = useState([]);
+  const onChange = (event) => setToDo(event.target.value);
+  const onSubmit = (event) => {
+    event.preventDefault();
+    if(toDo === ""){
+      return;
+    }
 
-  useEffect(() => {
-    console.log('I run only once');
-  }, []);
-  useEffect(() => {
-    // if(keyword !== '' && keyword.length > 5) {
-    //   console.log('search for', keyword);
-    // }
-    console.log('I run when keyword changes');
-  }, [keyword]); // keyword 가 변화할때, 코드를 실행 (API를 호출시켜줌)
-  useEffect(() => {
-    console.log('I run when counter changes');
-  }, [counter]);
-  useEffect(() => {
-    console.log('I run when keyword and counter changes');
-  }, [keyword, counter]);
+    // toDos.push(); toDos = ""; 와 같이 입력 불가. state를 직접 수정할 수 없음
+    setToDos((currentArray) => [toDo, ...currentArray]);
 
-  // useEffect(argument, dependency) : 코드를 언제 실행할지 결정하는 useEffect
-  // useEffect(() => {}, []) : [] 빈값일때 reactjs가 바라보는 대상이 없어 한번만 코드 실행
-  // useEffect(() => {}, [블라블라]) : 블라블라 가 변경될 때 코드 실행 / 블라블라는 state를 말함 / 즉, state가 변경될 때 코드 실행
-
+    // 수정하는 함수를 사용할 때, 두가지 옵션을 이용할 수 있음
+    // 단순히 값만 보낼때, setToDo("");
+    // 함수를 보낼때, 함수의 첫번째 argument를 현재 state로 보냄
+    setToDo("");
+  }
+  console.log(toDos);
   return (
     <div>
-      <input type="text" value={keyword} placeholder="Search here" onChange={onChange} />
-      <h1>{counter}</h1>
-      <button type="button" onClick={onClick}>Click me</button>
-      {/* <h1 className={styles.title}>Welcome Back!!!</h1>
-      <Button className={styles.btn} text={'Continue'} /> */}
+      <h1>My To Dos ({toDos.length})</h1>
+      <form onSubmit={onSubmit}>
+        <input type="text" placeholder="Write your to do..."  value={toDo} onChange={onChange} />
+        <button>Add To Do</button>
+      </form>
+      <hr />
+      <ul>
+      {toDos.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+      </ul>
+      
     </div>
   );
+  // map() : 예전 배열을 가져와서 변형
 }
 
 export default App;
