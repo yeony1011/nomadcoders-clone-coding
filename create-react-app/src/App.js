@@ -20,7 +20,7 @@ function App(){
   const onChangeSelect = (event) => {
     // console.log(event.target.value);
     // console.log(event.target.value, coins[event.target.value].quotes.USD.price.toFixed(2));
-    setAmount((pay / coins[event.target.value].quotes.USD.price.toFixed(2)).toFixed(2));
+    setAmount((pay / coins[event.target.value].quotes.USD.price.toFixed(2)));
   };
 
   const onChangeInput = (event) => {
@@ -30,20 +30,28 @@ function App(){
   return (
     <div>
       <h1>The Coins! {loading ? '' : `(${coins.length})`}</h1>
-      <div>
-        <input type="number" placeholder="Write your coin..." value={pay} onChange={onChangeInput} />
-        <span>USD</span>
-      </div>
       {
         loading ?
         <strong>Loading...</strong> : 
-        <select onChange={onChangeSelect}>
-          {coins.map((item, index) => (
-            <option value={index}>{item.name} ({item.symbol}): ${item.quotes.USD.price.toFixed(2)} USD</option>
-          ))}
-        </select>
+        <div>
+          <input type="number" placeholder="Enter the amount." value={pay} onChange={onChangeInput} />
+          <span style={{paddingLeft:'5px'}}>USD</span>
+          <select onChange={onChangeSelect} style={{display:'block', marginTop:'15px'}}>
+            {coins.map((item, index) => (
+              <option key={item.id} value={index}>{item.name} ({item.symbol}): ${item.quotes.USD.price.toFixed(2)} USD</option>
+            ))}
+          </select>
+        </div>
       }
-      <p>{pay !== 0 ? amount : 'again...'}</p>
+      <p>
+        {
+          pay < 0
+          ? 'Please write a positive number.'
+          : (
+              pay === 0 ? 'Enter the amount' : `${amount} coins available for purchase`
+            )
+        }
+      </p>
     </div>
   );
 }
