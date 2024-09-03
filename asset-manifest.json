@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.js": "/nomadcoders-clone-coding/static/js/main.a8b95b84.js",
+    "main.css": "/nomadcoders-clone-coding/static/css/main.cc1c0650.css",
+    "main.js": "/nomadcoders-clone-coding/static/js/main.8278ffbe.js",
     "index.html": "/nomadcoders-clone-coding/index.html",
-    "main.a8b95b84.js.map": "/nomadcoders-clone-coding/static/js/main.a8b95b84.js.map"
+    "main.cc1c0650.css.map": "/nomadcoders-clone-coding/static/css/main.cc1c0650.css.map",
+    "main.8278ffbe.js.map": "/nomadcoders-clone-coding/static/js/main.8278ffbe.js.map"
   },
   "entrypoints": [
-    "static/js/main.a8b95b84.js"
+    "static/css/main.cc1c0650.css",
+    "static/js/main.8278ffbe.js"
   ]
 }
