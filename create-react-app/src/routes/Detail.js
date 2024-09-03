@@ -1,5 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
+import styles from "../css/Detail.module.css";
+
 function Detail(){
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState([]);
@@ -34,15 +36,19 @@ function Detail(){
   console.log(movie);
 
   return (
-    <div>
+    <div className={styles.container}>
       {
         loading
-        ? <h1>Loading...</h1>
+        ? (
+          <div className={styles.loader}>
+            <span>Loading...</span>
+          </div>
+        )
         : (
-          <div>
+          <div className={styles.movie}>
             <h1>{movie.title}</h1>
-            <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt={movie.title} />
-            <ul>
+            <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} className={styles.movie__img} alt={movie.title} />
+            <ul className={styles.movie__list}>
               <li>
                 <strong>Release Date</strong>
                 <span>{movie.release_date}</span>
