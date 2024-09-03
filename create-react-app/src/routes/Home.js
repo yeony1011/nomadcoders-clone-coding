@@ -48,6 +48,7 @@ function Home() {
 
   return (
     <div className={styles.container}>
+      <h1 className={styles.container__title}>Popular Movies</h1>
       {
         loading
         ? (
@@ -64,7 +65,8 @@ function Home() {
                 coverImg={movie.poster_path}
                 title={movie.title}
                 summary={movie.overview}
-                genres={movie.genre_ids}
+                releaseDate={movie.release_date}
+                // genres={movie.genre_ids}
               />
             ))}
           </div>

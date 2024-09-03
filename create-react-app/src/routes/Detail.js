@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styles from "../css/Detail.module.css";
+import arrow from "../images/ico_arrow.png";
 
 function Detail(){
   const [loading, setLoading] = useState(true);
@@ -37,6 +38,7 @@ function Detail(){
 
   return (
     <div className={styles.container}>
+      <h1 className={styles.container__title}>Popular Movies</h1>
       {
         loading
         ? (
@@ -45,35 +47,41 @@ function Detail(){
           </div>
         )
         : (
-          <div className={styles.movie}>
-            <h1>{movie.title}</h1>
-            <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} className={styles.movie__img} alt={movie.title} />
-            <ul className={styles.movie__list}>
-              <li>
-                <strong>Release Date</strong>
-                <span>{movie.release_date}</span>
-              </li>
-              <li>
-                <strong>Runtime</strong>
-                <span>{movie.runtime}M</span>
-              </li>
-              <li>
-                <strong>Genres</strong>
-                <span>
-                  {movie.genres.map((g) => (
-                    <span key={g}>{g.name}</span>
-                  ))}
-                </span>
-              </li>
-              <li>
-                <strong>Vote Average</strong>
-                <span>{movie.vote_average}</span>
-              </li>
-              <li>
-                <strong>Overview</strong>
-                <span>{movie.overview}</span>
-              </li>
-            </ul>
+          <div>
+            <div className={styles.movie}>
+              <h1>{movie.title}</h1>
+              <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} className={styles.movie__img} alt={movie.title} />
+              <ul className={styles.movie__list}>
+                <li>
+                  <strong>Release Date</strong>
+                  <span>{movie.release_date}</span>
+                </li>
+                <li>
+                  <strong>Runtime</strong>
+                  <span>{movie.runtime}M</span>
+                </li>
+                <li>
+                  <strong>Genres</strong>
+                  <span className={styles.movie__genres}>
+                    {movie.genres.map((g) => (
+                      <span key={g}>{g.name}</span>
+                    ))}
+                  </span>
+                </li>
+                <li>
+                  <strong>Vote Average</strong>
+                  <span>{movie.vote_average}</span>
+                </li>
+                <li>
+                  <strong>Overview</strong>
+                  <span>{movie.overview}</span>
+                </li>
+              </ul>
+            </div>
+            <Link to={`/`} className={styles.movie__link}>
+              <img src={arrow} width="11" height="20" alt="" />
+              List View
+            </Link>
           </div>
         )
       }
