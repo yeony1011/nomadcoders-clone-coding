@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/nomadcoders-clone-coding/static/js/main.b765432c.js",
+    "main.js": "/nomadcoders-clone-coding/static/js/main.a8b95b84.js",
     "index.html": "/nomadcoders-clone-coding/index.html",
-    "main.b765432c.js.map": "/nomadcoders-clone-coding/static/js/main.b765432c.js.map"
+    "main.a8b95b84.js.map": "/nomadcoders-clone-coding/static/js/main.a8b95b84.js.map"
   },
   "entrypoints": [
-    "static/js/main.b765432c.js"
+    "static/js/main.a8b95b84.js"
   ]
 }
