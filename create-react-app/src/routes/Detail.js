@@ -23,7 +23,7 @@ function Detail(){
 
   const getMovie = useCallback(async() => {
     const json = await(
-      await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=`)
+      await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=c83259c6d05043fdcabb4d242f952fdb`)
     ).json();
     setMovie(json);
     setLoading(false);

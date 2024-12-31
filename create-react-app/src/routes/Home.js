@@ -8,7 +8,7 @@ function Home() {
   const getMovies = async() => {
     const json = await (
       await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=`
+        `https://api.themoviedb.org/3/movie/popular?api_key=c83259c6d05043fdcabb4d242f952fdb`
       )
     ).json();
     setMovies(json.results);
